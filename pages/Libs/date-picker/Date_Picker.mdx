@@ -1,0 +1,115 @@
+
+
+## Overview
+
+- It renders different date/time pickers based on props - GC/EC calendar, date/time/datetime mode
+
+- Manages state for currentDate, monthPicker, yearPicker, timePicker visibility
+
+- dateResult state holds the selected date value
+
+- calendarType state toggles between GC and EC calendars
+
+- Main picker components rendered conditionally based on states:
+
+    - GcDatePicker / EcDatePicker for date selection
+    - YearPicker
+    - MonthPicker
+    - TimePicker
+
+import { Tabs } from 'nextra/components'
+ 
+<Tabs items={['Documentation', 'Pros']}>
+    <Tabs.Tab>
+
+        ## Usage
+
+        ``` js copy
+
+        import {DatePicker} from '@date-picker';
+        import {useState} from 'react'
+
+        const Afunction = () => {
+
+        const [date, setDate] = useState(null);
+        <DatePicker
+            pickerType="dateTime"
+            setDateResult={setDate}
+        />
+
+        }
+        ```
+
+        ## Date time
+
+        To make the date picker popover display information in a dateTime format you need to set the **pickerType** prop to 'dateTime'.
+
+        ``` js copy
+        <DateOverlay
+            rangePicker={false}
+            pickerType="dateTime"
+            setDateResult={setDate}
+        />
+        ```
+
+        ## Date
+
+        To make the date picker popover display the date information only, you need to set the **pickerType** prop to 'date'.
+
+        ``` js copy
+        <DateOverlay
+            rangePicker={false}
+            pickerType="date"
+            setDateResult={setDate}
+        />
+        ```
+
+        ## Time
+
+        To make the date picker popover display the time information only, you need to set the **pickerType** prop to 'time'.
+
+        ``` js copy
+        <DateOverlay
+            rangePicker={false}
+            pickerType="time"
+            setDateResult={setDate}
+        />
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+
+        ## calendarType
+        Sets Gregorian or English calendar type. This can be changed from the calendar itself but this prop is used to set the initial calendar type.
+
+        ## minDate and maxDate
+        ###### Type : Date
+        minDate/maxDate restrict selectable dates.
+        
+        ## selectedDate
+        ###### Type : Date
+        selectedDate sets default single date.
+        
+        ## pickerType
+        ###### Type : 'dateTime' | 'date' | 'time';
+        pickerType sets if it's date, datetime or time.
+
+        ## offDays
+        ###### Type : number[];
+        offDays excludes selectable weekdays.
+
+        For example in the example below, Sunday and Saturday can not be selected. 
+        ``` js
+            <DatePicker
+                calendarType="GC"
+                pickerType="dateTime"
+                offDays={[0, 6]}
+            />
+        ```
+
+        ## setDateResult
+        The setDateResult prop allows the parent component to set the selected date back.
+
+        ## appointments
+        Appointments pass calendar events to datepickers.
+    </Tabs.Tab>
+</Tabs>

@@ -1,0 +1,127 @@
+
+
+## Overview
+
+DateOverlay is a React component that renders either a **single date picker**, **range date picker** or a **time** picker popover menu unlike DatePicker which doesnt have a popover menu, but we'll cover that on its own section.
+
+import { Tabs } from 'nextra/components'
+ 
+<Tabs items={['Documentation', 'Pros']}>
+    <Tabs.Tab>
+
+        ## Usage
+
+        ``` js copy
+
+        import {DateOverlay} from '@date-picker';
+        import {useState} from 'react'
+
+        const Afunction = () => {
+
+        const [date, setDate] = useState(null);
+        <DateOverlay
+            rangePicker={false}
+            pickerType="dateTime"
+            setDateResult={setDate}
+        />
+
+        }
+        ```
+
+        ## Date time
+
+        To make the date picker popover display information in a dateTime format you need to set the **pickerType** prop to 'dateTime'.
+
+        ``` js copy
+        <DateOverlay
+            rangePicker={false}
+            pickerType="dateTime"
+            setDateResult={setDate}
+        />
+        ```
+
+        ## Date
+
+        To make the date picker popover display the date information only, you need to set the **pickerType** prop to 'date'.
+
+        ``` js copy
+        <DateOverlay
+            rangePicker={false}
+            pickerType="date"
+            setDateResult={setDate}
+        />
+        ```
+
+        ## Time
+
+        To make the date picker popover display the time information only, you need to set the **pickerType** prop to 'time'.
+
+        ``` js copy
+        <DateOverlay
+            rangePicker={false}
+            pickerType="time"
+            setDateResult={setDate}
+        />
+        ```
+
+        ## Range Picker
+
+        To pick a range between two days the rangePicker prop needs to be set to true. The pickerType prop can be set to any of the above values we covered.
+        ``` js copy
+        <DateOverlay
+            rangePicker={true}
+            pickerType="date"
+            setDateResult={setDate}
+        />
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+
+        ## calendarType
+        Sets Gregorian or English calendar type. This can be changed from the calendar itself but this prop is used to set the initial calendar type.
+
+        ## rangePicker
+        ###### Type : boolean;
+        rangePicker prop determines if single or range picker is rendered.
+
+        ## minDate and maxDate
+        ###### Type : Date
+        minDate/maxDate restrict selectable dates.
+        
+        ## selectedDate
+        ###### Type : Date
+        selectedDate sets default single date.
+
+        ## startDate adn endDate
+        ###### Type : Date
+        startDate/endDate set default range dates.
+
+        ## dateFormat
+        dateFormat formats the displayed date.
+
+        ## pickerType
+        ###### Type : 'dateTime' | 'date' | 'time';
+        pickerType sets if it's date, datetime or time.
+
+        ## offDays
+        ###### Type : number[];
+        offDays excludes selectable weekdays.
+
+        For example in the example below, Sunday and Saturday can not be selected. 
+        ``` js
+            <DateOverlay
+                calendarType="GC"
+                rangePicker={false}
+                pickerType="dateTime"
+                setDateResult={setDate}
+                offDays={[0, 6]}
+            />
+        ```
+
+        ## setDateResult
+        The setDateResult prop allows the parent component to set the selected date back.
+
+        ## appointments
+        Appointments pass calendar events to datepickers.
+    </Tabs.Tab>
+</Tabs>
